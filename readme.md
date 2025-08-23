@@ -26,6 +26,8 @@ of query optimization bugs, and the fix of query optimization bugs are obtained 
 ## Tool for Exposing Optimization Bugs
 
 To demonstrate the value of our characteristic study, we develop a testing tool based on our finding about the manifestation of query optimization bug. 
+The tool is implemented on top of **GDSmith** (https://github.com/ddaa2000/GDsmith), and uses our findings to guide the generation of tests that can effecitively 
+expose query optimization bugs. Our re-implementation consists of around 10K new non-comment lines of Java code,
 
 # GSlicer
 
