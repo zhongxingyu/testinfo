@@ -1,4 +1,7 @@
-| ID  | GDMS  | Issue|
+Overall, we select 48 query optimization issues for Neo4j, 12 query optimizatio issues for Memgraph, 30 query optimizatio issues for Redisgraph, and 22 query optimizatio issues for kuzu. The following table contains the links for these issues. 
+
+
+| ID  | GDBMS  | Issue|
 |------|------|------|
 | 1 |Neo4j|[Neo4j-4315](https://github.com/neo4j/neo4j/issues/4315) |
 | 2 |Neo4j|[Neo4j-4462](https://github.com/neo4j/neo4j/issues/4462) |
