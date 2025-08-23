@@ -25,7 +25,7 @@ The tool is implemented on top of [GDSmith](https://github.com/ddaa2000/GDsmith)
 expose query optimization bugs. Our re-implementation consists of around 10K new non-comment lines of Java code, and the [src](./src) folder contains the source code. 
 The packaged code is given in tool.jar.
 
-## Installation
+#### Installation
 
 - Java 21
 - Maven
@@ -33,9 +33,9 @@ The packaged code is given in tool.jar.
 
 ------
 
-## Running yu
+#### Running the tool
 
-### Example: Compare two versions of Neo4j
+##### Example: Compare two versions of Neo4j
 
 First, start two Neo4j instances:
 
@@ -79,7 +79,7 @@ Notice that **yu** does not automatically create database users. You may need to
 
 ------
 
-### Configuration
+##### Configuration
 
 - `--num-tries <N>` → number of graphs to generate
 - `--num-queries <M>` → queries per graph
@@ -92,7 +92,7 @@ The config file uses keys of the form `<engine>@<label>` where:
 
 ------
 
-## Supported Databases
+#### Supported Databases
 
 - **neo4j**
 - **memgraph**
