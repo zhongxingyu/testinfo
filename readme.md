@@ -23,73 +23,79 @@ have clear information for us to understand at least the root causes. For the sl
 To demonstrate the value of our characteristic study, we develop a testing tool based on our finding about the manifestation of query optimization bug. 
 The tool is implemented on top of [GDSmith](https://github.com/ddaa2000/GDsmith), and uses our findings to guide the generation of tests that can effecitively 
 expose query optimization bugs. Our re-implementation consists of around 10K new non-comment lines of Java code, and the [src](./src) folder contains the source code. 
+The packaged code is given in tool.jar.
 
-# GSlicer
+## Installation
 
-An automated testing tool for graph-processing systems via Graph-cutting. The codebase for the paper ***"Finding Logic Bugs in Graph-processing Systems via Graph-cutting"***
+- Java 21
+- Maven
+- Docker (to run database instances conveniently)
 
-## 📰 Project Update
+------
 
-We plan to actively maintain GSlicer and extend support for more algorithms in NetworkX (see `/graphs/networks/algs`). We warmly welcome contributions—feel free to open a pull request if you’d like to be part of the project!
+## Running yu
 
+### Example: Compare two versions of Neo4j
 
-## 🚀 Quick Start
+First, start two Neo4j instances:
 
-### 1. Environment Requirements
-
-The code has been tested on a Linux (Ubuntu 22.04 LTS) workstation with Python 3.10. To set up the environment, follow these steps:
-
-```bash
-docker compose up
-pip install neo4j
-pip install networkx
-pip install kuzu
-pip install numpy
-pip install pandas
+```
+docker run -d --name neo4j-5.26.1 -e NEO4J_AUTH=neo4j/password -e NEO4J_dbms_transaction_timeout="180s" -p 7474:7474 -p 7687:7687 neo4j:5.26.1
+docker run -d --name neo4j-5.26.0 -e NEO4J_AUTH=neo4j/password -e NEO4J_dbms_transaction_timeout="180s" -p 7475:7474 -p 7688:7687 neo4j:5.26.0
 ```
 
-### 2. Testing Graph-Processing Systems
+Then create a `config.json` file:
 
-- **Neo4j GDBMS**: To test Neo4j, simply run:
-  ```bash
-  python ./databases/neo4j/test.py
-  ```
-
-- **Neo4j-GDS (Graph Data Science Library)**: To test specific algorithms, navigate to the corresponding directory. For example, to test triangle counting:
-  ```bash
-  cd ./graphs/neo4j/algorithms/triangle_counting
-  python triangle_counting.py
-  ```
-
-- **NetworkX**: To test using NetworkX, run:
-  ```bash
-  python ./graphs/networkx/entrance.py
-  ```
-  Note that for NetworkX, we do not provide instances for applying graph-cutting oracles other than those identified by Algorithm 1. Users may implement them and add to `./graphs/networkx/output.json` file before running the above command.
-  You can get the basic `./graphs/networkx/output.json` file by reproducing the task coverage results (see below).
-
-- **Kuzu**: To test using Kuzu, run:
-  ```bash
-  python ./graphs/kuzu/launcher.py
-  ```
-
-### Reproducing Task Coverage Results
-
-To reproduce the task coverage results, run:
-```bash
-python ./graphs/networkx/sample.py
+```
+{
+  "neo4j@5.26.1": {
+    "port": 7687,
+    "host": "localhost",
+    "username": "neo4j",
+    "password": "password"
+  },
+  "neo4j@5.26.0": {
+    "port": 7688,
+    "host": "localhost",
+    "username": "neo4j",
+    "password": "password"
+  }
+}
 ```
 
-### Reproducing Code Coverage Results
+Now run yu :
 
-To reproduce the code coverage results:
-1. Manually compile **Kuzu v0.4.2** and install the **LCOV** tool.
-   - See [Kuzu Developer Guide](https://docs.kuzudb.com/developer-guide/) and [LCOV Documentation](https://lcov.readthedocs.io/en/latest/).
-   
-2. Once Kuzu and LCOV are set up, run:
-   ```bash
-   python ./graphs/kuzu/launcher.py
-   ```
+```
+java -jar target\yu.jar --num-tries 500 --num-queries 1 
+```
+
+- yu will generate **500 graphs**,
+- for each graph it will generate **1 queries**,
+- queries will be executed across all configured databases,
+- results — including **query outputs and performance** — will be compared to identify inconsistencies.
+- crashes from any version will also be recorded in the `logs/` directory.
+
+Notice that **yu** does not automatically create database users. You may need to manually create a user and grant the necessary privileges for remote connection, query execution, writing to databases, and creating or deleting databases.
+
+------
+
+### Configuration
+
+- `--num-tries <N>` → number of graphs to generate
+- `--num-queries <M>` → queries per graph
+- connection details are defined in `config.json`.
+
+The config file uses keys of the form `<engine>@<label>` where:
+
+- `<engine>` is one of `neo4j`, `redisgraph`, or `memgraph`,
+- `<label>` can be a version number or a custom tag.
+
+------
+
+## Supported Databases
+
+- **neo4j**
+- **memgraph**
 
 
 
