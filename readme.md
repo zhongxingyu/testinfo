@@ -12,7 +12,7 @@ tailored to uncover GDBMS query optimization bugs, and the tool found 20 unique 
 
 ## GDBMS Issues Under Study
 
-The "" folder contains the 112 issues used for conducting the characterstic study. These issues were selected from four popular GDBMSs,
+The "Issues" folder contains the 112 issues used for conducting the characterstic study. These issues were selected from four popular GDBMSs,
 including Neo4j, Memgraph, RedisGraph, and Kuzu. We first search for the issue trackers of the four GDBMSs in to identify query 
 optimization bugs. More specifically, in the issue tracker, we search for resolved and valid issues whose entire report contains optimization-related keywords, 
 such as “optimize”, “planner”, “slow”, “fast”, “latency”, “throughput”, and “performance”. In total, we identify 763 issues that match
