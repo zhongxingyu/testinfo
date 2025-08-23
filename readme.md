@@ -12,22 +12,17 @@ tailored to uncover GDBMS query optimization bugs, and the tool found 20 unique 
 
 ## GDBMS Issues Under Study
 
-The [Issues](./Issues) folder contains the 112 issues used for conducting the characterstic study. These issues were selected from four popular GDBMSs,
-including Neo4j, Memgraph, RedisGraph, and Kuzu. We first search for the issue trackers of the four GDBMSs in to identify query 
-optimization bugs. More specifically, in the issue tracker, we search for resolved and valid issues whose entire report contains optimization-related keywords, 
-such as “optimize”, “planner”, “slow”, “fast”, “latency”, “throughput”, and “performance”. In total, we identify 763 issues that match
-our search criteria. For these matched issues, we then manually check them to make sure that they are query optimization
+The [Issues](./Issues) folder contains the 112 issues used for conducting the characterstic study. These issues were selected from four popular GDBMSs, including Neo4j, Memgraph, RedisGraph, and Kuzu. We first search for the issue trackers of the four GDBMSs in to identify query 
+optimization bugs. More specifically, in the issue tracker, we search for resolved and valid issues whose entire report contains optimization-related keywords, such as `optimize`, `planner`, `slow`, `fast`, `latency`, `throughput`, and `performance`. In total, we identify 763 issues that match our search criteria. For these matched issues, we then manually check them to make sure that they are query optimization
 bugs according to our query optimization bug definition, and accordingly get 198 query optimization bugs. Finally, after manually inspecting
 and analyzing the issue message, source code, commit message, and bug patch for each of the 198 bugs, we select 112 query optimization bugs that 
-have clear information for us to understand at least the root causes. For the slected 112 issues, two authors separately performed the inspection and
-discussed disagreements, aiming to reach a consensus. Overall, 10 novel and important findings on the cause of query optimization bugs, the manifestation
-of query optimization bugs, and the fix of query optimization bugs are obtained at last. 
+have clear information for us to understand at least the root causes. For the slected 112 issues, two authors separately performed the inspection and discussed disagreements, aiming to reach a consensus. Overall, 10 novel and important findings on the cause of query optimization bugs, the manifestation of query optimization bugs, and the fix of query optimization bugs are obtained at last. 
 
 ## Tool for Exposing Optimization Bugs
 
 To demonstrate the value of our characteristic study, we develop a testing tool based on our finding about the manifestation of query optimization bug. 
 The tool is implemented on top of [GDSmith](https://github.com/ddaa2000/GDsmith), and uses our findings to guide the generation of tests that can effecitively 
-expose query optimization bugs. Our re-implementation consists of around 10K new non-comment lines of Java code, and the 
+expose query optimization bugs. Our re-implementation consists of around 10K new non-comment lines of Java code, and the [src](./src) folder contains the source code. 
 
 # GSlicer
 
