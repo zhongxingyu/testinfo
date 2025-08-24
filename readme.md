@@ -12,13 +12,13 @@ tailored to uncover GDBMS query optimization bugs, and the tool found 20 unique 
 
 ## GDBMS Issues Under Study
 
-The [Issues](./Issues) folder contains the 112 issues used for conducting the characterstic study. These issues were selected from four popular GDBMSs, including Neo4j, Memgraph, RedisGraph, and Kuzu. We first search for the issue trackers of the four GDBMSs in to identify query 
+The [Studied-Issues](./Studied-Issues) folder contains the 112 issues used for conducting the characterstic study. These issues were selected from four popular GDBMSs, including Neo4j, Memgraph, RedisGraph, and Kuzu. We first search for the issue trackers of the four GDBMSs in to identify query 
 optimization bugs. More specifically, in the issue tracker, we search for resolved and valid issues whose entire report contains optimization-related keywords, such as `optimize`, `planner`, `slow`, `fast`, `latency`, `throughput`, and `performance`. In total, we identify 763 issues that match our search criteria. For these matched issues, we then manually check them to make sure that they are query optimization
 bugs according to our query optimization bug definition, and accordingly get 198 query optimization bugs. Finally, after manually inspecting
 and analyzing the issue message, source code, commit message, and bug patch for each of the 198 bugs, we select 112 query optimization bugs that 
 have clear information for us to understand at least the root causes. For the slected 112 issues, two authors separately performed the inspection and discussed disagreements, aiming to reach a consensus. Overall, 10 novel and important findings on the cause of query optimization bugs, the manifestation of query optimization bugs, and the fix of query optimization bugs are obtained at last. 
 
-## Tool for Exposing Optimization Bugs
+## Tool for Exposing Query Optimization Bugs
 
 To demonstrate the value of our characteristic study, we develop a testing tool based on our finding about the manifestation of query optimization bug. 
 The tool is implemented on top of [GDSmith](https://github.com/ddaa2000/GDsmith), and uses our findings to guide the generation of tests that can effecitively 
@@ -63,7 +63,7 @@ java -jar tool.jar --num-tries 500 --num-queries 1
 - the tool will generate **500 graphs**,
 - for each graph, it will generate **1 queries**,
 - queries will be executed across the configured database(s),
-- crashes and errors from will be recorded in the `logs/` directory.
+- crashes and errors will be recorded in the `logs/` directory.
 
 Notice that the tool does not automatically create database users. You may need to manually create a user and grant the necessary privileges for remote connection, 
 query execution, writing to databases, and creating or deleting databases.
@@ -97,4 +97,4 @@ Memgraph starting from version 3.1.0. The testing process lasts three months, wh
 Overall, the tool found 20 unique bugs, including 12 in Neo4j and 8 in Memgraph. Among them, 17 bugs were confirmed and 14 fixed. In particular, for the 17 confirmed bugs, 15 were 
 confirmed to be query optimization bugs. These results demonstrate that the tool is practical and effective in detecting query optimization bugs in GDBMSs. When reporting the detected issues, 
 we used our real-name accounts to facilate the communication. To keep the double-blind rules, we have removed the original links for issue reports here. The overall bug information can be found 
-in [Found-bugs](./Found-bugs) folder.
+in [Found-Bugs](./Found-Bugs) folder.
