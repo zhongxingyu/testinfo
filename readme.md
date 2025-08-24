@@ -33,7 +33,7 @@ The packaged code is given in tool.jar.
 
 ------
 
-#### Running the tool - an example for running a Neo4j version
+#### Running the tool ---- an example for running a Neo4j version
 
 First, start a Neo4j instance:
 
@@ -88,9 +88,7 @@ The config file uses keys of the form `<engine>@<label>` where:
 - **Neo4j**
 - **Memgraph**
 
-
-
-## 🐛 Evaluation of the Tool
+## Evaluation of the Tool
 
 We evaluate the tool using the latest available release versions of Neo4j and Memgraph, the two most popular GDBMSs that use Cypher as the query language. During our testing
 period, if a new version of the two tested GDBMSs is released, we set up the tool to test the updated versions. More specifically, we test Neo4j starting from version 5.26.3 and
