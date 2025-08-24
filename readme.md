@@ -60,8 +60,8 @@ Now run the tool :
 java -jar tool.jar --num-tries 500 --num-queries 1 
 ```
 
-- yu will generate **500 graphs**,
-- for each graph it will generate **1 queries**,
+- the tool will generate **500 graphs**,
+- for each graph, it will generate **1 queries**,
 - queries will be executed across the configured database(s),
 - crashes and errors from will be recorded in the `logs/` directory.
 
@@ -99,14 +99,4 @@ Memgraph starting from version 3.1.0. The testing process lasts three months, wh
 Overall, the tool found 20 unique bugs, including 12 in Neo4j and 8 in Memgraph. Among them, 17 bugs were confirmed and 14 fixed. In particular, for the 17 confirmed bugs, 15 were 
 confirmed to be query optimization bugs. These results demonstrate that the tool is practical and effective in detecting query optimization bugs in GDBMSs. When reporting the detected issues, 
 we used our real-name accounts to facilate the communication. To keep the double-blind rules, we have removed the original links for issue reports here. The overall bug information can be found 
-in `./found-bugs/overall.csv`.
-
-
-Since all issues were submitted using real-name accounts, we are temporarily unable to share them during the review period. We will update them here afterward
-
-
-*To keep the double-blind rules, we have removed the original links for bug reports in the artifacts submission.*
-
-1. **GSlicer** detected 39 unique and previously unknown bugs, of which 34 have been fixed and confirmed by developers. The overall bug information can be found in `./found-bugs/overall.csv`.
-
-2. Triggering test cases for logic bugs can be found in `./found-bugs/cases`.
+in [Found-bugs](./Found-bugs) folder.
