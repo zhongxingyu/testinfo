@@ -1,6 +1,7 @@
 Overall, the tool found 20 unique bugs, including 12 in Neo4j and 8 in Memgraph. The following table gives a summary of these bugs. 
-In particular,  the column Opt Bugs
-
+In particular,  the column `Opt Bugs? ` denotes whether the detected bug is a query optimization bug, and the column `Cypher Query Feature` denotes the attrbitutes of the bug-exposing Cypher query. Overall, most queries use nested subquery clauses or have the
+`Single Clause Multiple Variables Interaction` feature (that is, not less than two different variables bound in the previous clauses are
+used in a single clause), which is in line with our core design principle of the tool. See our submission for more deatails. 
 
 | Detected Bug ID | GDBMS| Confirmed?| Opt Bugs?| Status| Cypher Query Feature | 
 |------|------|------|------|------|------|
