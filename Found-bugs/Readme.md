@@ -1,6 +1,5 @@
-| ID  | GDMS  | Issue|
-|------|------|------|
 | Detected Bug ID | ,| GDBMS| ,| Confirmed?| ,| Opt Bugs?| ,| Status| ,| Cypher Query Feature | 
+|------|------|------|------|------|------|
 | 1 | ,| Neo4j| ,| YES| ,| YES| ,| Fixed| ,| Uses nested subquery clauses (nested CALL with CALL) and has the Single Clause Multiple Variables Interaction feature| 
 | 2 | ,| Neo4j| ,| YES| ,| YES| ,| Fixed| ,| Uses nested subquery clauses (nested COLLECT with CALL) and has the Single Clause Multiple Variables Interaction feature| 
 | 3 | ,| Neo4j| ,| YES| ,| YES| ,| Fixed| ,| Uses nested subquery clauses (nested CALL with EXISTS with COUNT) and has the Single Clause Multiple Variables Interaction feature| 
