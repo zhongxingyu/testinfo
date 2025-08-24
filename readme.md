@@ -88,6 +88,8 @@ The config file uses keys of the form `<engine>@<label>` where:
 - **Neo4j**
 - **Memgraph**
 
+The supprt for other GDBMSs (for instance Redisgraph and Kuzu) is in progress. 
+
 ## Evaluation of the Tool
 
 We evaluate the tool using the latest available release versions of Neo4j and Memgraph, the two most popular GDBMSs that use Cypher as the query language. During our testing
