@@ -33,29 +33,20 @@ The packaged code is given in tool.jar.
 
 ------
 
-#### Running the tool
+#### Running the tool - an example for running a Neo4j version
 
-##### Example: Compare two versions of Neo4j
-
-First, start two Neo4j instances:
+First, start a Neo4j instance:
 
 ```
-docker run -d --name neo4j-5.26.1 -e NEO4J_AUTH=neo4j/password -e NEO4J_dbms_transaction_timeout="180s" -p 7474:7474 -p 7687:7687 neo4j:5.26.1
-docker run -d --name neo4j-5.26.0 -e NEO4J_AUTH=neo4j/password -e NEO4J_dbms_transaction_timeout="180s" -p 7475:7474 -p 7688:7687 neo4j:5.26.0
+docker run -d --name neo4j-5.26.3 -e NEO4J_AUTH=neo4j/password -e NEO4J_dbms_transaction_timeout="180s" -p 7474:7474 -p 7687:7687 neo4j:5.26.3
 ```
 
 Then create a `config.json` file:
 
 ```
 {
-  "neo4j@5.26.1": {
+  "neo4j@5.26.3": {
     "port": 7687,
-    "host": "localhost",
-    "username": "neo4j",
-    "password": "password"
-  },
-  "neo4j@5.26.0": {
-    "port": 7688,
     "host": "localhost",
     "username": "neo4j",
     "password": "password"
@@ -63,19 +54,19 @@ Then create a `config.json` file:
 }
 ```
 
-Now run yu :
+Now run the tool :
 
 ```
-java -jar target\yu.jar --num-tries 500 --num-queries 1 
+java -jar tool.jar --num-tries 500 --num-queries 1 
 ```
 
 - yu will generate **500 graphs**,
 - for each graph it will generate **1 queries**,
-- queries will be executed across all configured databases,
-- results — including **query outputs and performance** — will be compared to identify inconsistencies.
-- crashes from any version will also be recorded in the `logs/` directory.
+- queries will be executed across the configured database(s),
+- crashes and errors from will be recorded in the `logs/` directory.
 
-Notice that **yu** does not automatically create database users. You may need to manually create a user and grant the necessary privileges for remote connection, query execution, writing to databases, and creating or deleting databases.
+Notice that the tool does not automatically create database users. You may need to manually create a user and grant the necessary privileges for remote connection, 
+query execution, writing to databases, and creating or deleting databases.
 
 ------
 
@@ -87,15 +78,15 @@ Notice that **yu** does not automatically create database users. You may need to
 
 The config file uses keys of the form `<engine>@<label>` where:
 
-- `<engine>` is one of `neo4j`, `redisgraph`, or `memgraph`,
+- `<engine>` is one of `neo4j` and `memgraph`,
 - `<label>` can be a version number or a custom tag.
 
 ------
 
 #### Supported Databases
 
-- **neo4j**
-- **memgraph**
+- **Neo4j**
+- **Memgraph**
 
 
 
