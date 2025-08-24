@@ -1,3 +1,7 @@
+Overall, the tool found 20 unique bugs, including 12 in Neo4j and 8 in Memgraph. The following table gives a summary of these bugs. 
+In particular,  the column Opt Bugs
+
+
 | Detected Bug ID | GDBMS| Confirmed?| Opt Bugs?| Status| Cypher Query Feature | 
 |------|------|------|------|------|------|
 | 1 | Neo4j| YES| YES| Fixed| Uses nested subquery clauses (nested CALL with CALL) and has the Single Clause Multiple Variables Interaction feature| 
