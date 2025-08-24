@@ -18,5 +18,5 @@
 | 16| Memgraph| YES| YES| Fixed| Uses nested subquery clauses (nested CALL with EXISTS)| 
 | 17| Memgraph| YES| YES| Fixed| Has the Single Clause Multiple Variables Interaction feature| 
 | 18| Memgraph| YES| YES| Fixed| None| 
-| 19| Memgraph| YES| NO|| NO| Has the Single Clause Multiple Variables Interaction feature| 
+| 19| Memgraph| YES| NO| NO| Has the Single Clause Multiple Variables Interaction feature| 
 | 20| Memgraph| NO| Unknown| NO| Has the Single Clause Multiple Variables Interaction feature| 
