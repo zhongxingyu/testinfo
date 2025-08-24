@@ -9,7 +9,7 @@
 | 7| Neo4j| YES| YES| Fixed| Uses nested subquery clauses (nested COLLECT with EXISTS)| 
 | 8| Neo4j| YES| YES| Fixed| Has the Single Clause Multiple Variables Interaction feature| 
 | 9| Neo4j| YES| YES| NO| Has the Single Clause Multiple Variables Interaction feature| 
-| 10| Neo4j| YES| NO| NO| Uses nested subquery clauses (nested COUNT with CALL)| 
+| 10| Neo4j| YES| NO| NO| None| 
 | 11| Neo4j| NO| Unknown| NO| Uses nested subquery clauses (nested CALL with EXISTS)| 
 | 12| Neo4j| NO| Unknown| NO| None| 
 | 13| Memgraph| YES| YES| Fixed| Uses nested subquery clauses (nested CALL with COUNT) and has the Single Clause Multiple Variables Interaction feature| 
@@ -18,5 +18,5 @@
 | 16| Memgraph| YES| YES| Fixed| Uses nested subquery clauses (nested CALL with EXISTS)| 
 | 17| Memgraph| YES| YES| Fixed| Has the Single Clause Multiple Variables Interaction feature| 
 | 18| Memgraph| YES| YES| Fixed| None| 
-| 19| Memgraph| YES| NO| NO| Has the Single Clause Multiple Variables Interaction feature| 
+| 19| Memgraph| YES| NO| NO| None | 
 | 20| Memgraph| NO| Unknown| NO| Has the Single Clause Multiple Variables Interaction feature| 
